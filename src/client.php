@@ -72,12 +72,6 @@
         {
             $GLOBALS['DB']->exec('DELETE FROM clients');
         }
-
-
-
-
-
-
     }
 
 ?>
