@@ -26,6 +26,19 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        function find($search_id)
+        {
+            $found_client = null;
+            $clients = self::getAll();
+            foreach($clients as $client) {
+                $client_id = $client->getId();
+                if ($client_id == $search_id) {
+                    $found_client = $client;
+                }
+            }
+            return $found_client;
+        }
+
         static function getAll()
         {
             $returned_clients = $GLOBALS['DB']->query('SELECT * FROM clients');
