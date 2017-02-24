@@ -53,6 +53,24 @@
 
             $this->assertEquals(true, is_numeric($result));
         }
+
+        function test_find()
+        {
+            $client_name = 'Jane Doe';
+            $test_Client = new Client ($client_name);
+            $test_Client->save();
+
+            $name = 'Sally Style';
+            $bio = 'Sally does a lot of hair.';
+            $client_id = $test_Client->getId();
+            $test_stylist = new Stylist ($name, $bio, $client_id);
+            $test_stylist->save();
+
+            $result = Stylist::find($test_stylist->getId());
+
+            $this->assertEquals($test_Stylist, $result);
+
+        }
     }
 
 

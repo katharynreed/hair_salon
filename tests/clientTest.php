@@ -22,7 +22,7 @@
         function test_getName()
         {
             $client_name = 'Jane Doe';
-            $test_Client = new Client ($client_name);
+            $test_Client = new Client($client_name);
             $test_Client->save();
 
             $result = $test_Client->getName();
@@ -33,7 +33,7 @@
         function test_getId()
         {
             $client_name = 'Jane Doe';
-            $test_Client = new Client ($client_name);
+            $test_Client = new Client($client_name);
             $test_Client->save();
 
             $result = $test_Client->getId();
@@ -45,7 +45,7 @@
         function test_find()
         {
             $client_name = 'Jane Doe';
-            $test_Client = new Client ($client_name);
+            $test_Client = new Client($client_name);
             $test_Client->save();
 
             $result = Client::find($test_Client->getId());
@@ -56,7 +56,7 @@
         function test_update()
         {
             $client_name = 'Jane Doe';
-            $test_Client = new Client ($client_name);
+            $test_Client = new Client($client_name);
             $test_Client->save();
 
             $new_name = 'Robin Sparkles';
@@ -69,7 +69,7 @@
         function test_delete()
         {
             $client_name = 'Jane Doe';
-            $test_Client = new Client ($client_name);
+            $test_Client = new Client($client_name);
             $test_Client->save();
 
             $client_name2 = 'John Doe';
@@ -84,7 +84,7 @@
         function test_getAll()
         {
             $client_name = 'Jane Doe';
-            $test_Client = new Client ($client_name);
+            $test_Client = new Client($client_name);
             $test_Client->save();
 
             $client_name2 = 'John Doe';
@@ -99,7 +99,7 @@
         function test_deleteAll()
         {
             $client_name = 'Jane Doe';
-            $test_Client = new Client ($client_name);
+            $test_Client = new Client($client_name);
             $test_Client->save();
 
             $client_name2 = 'John Doe';
