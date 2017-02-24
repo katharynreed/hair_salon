@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hair Salon</title>
+    </head>
+    <body>
+        <h1>Hair Salon</h1>
+        {% block content %}
+            Welcome {{ client.getName }}!
+            <blockquote>
+                {% for stylist in stylists %}
+                    {% if {{client.getId }} == stylist {{ stylist.getClientId }} %}
+                     <p><a href="stylist/{{ stylist.getId }}">Your stylist is {{ stylist.getName }}.</a><p>
+                    {% endif %}
+                {% endfor %}
+            </blockquote>
+
+            <p><a href='/clients'>See client list</a></p>
+            <p><a href='/stylists'>See stylist list</a></p>
+            <p><a href='/add_stylist'>Add a stylist</a></p>
+        {% endblock %}
+    </body>
+</html>
