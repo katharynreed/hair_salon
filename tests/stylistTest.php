@@ -137,6 +137,29 @@
 
             $this->assertEquals([$test_stylist, $test_stylist2], $result);
         }
+
+        function test_deleteAll()
+        {
+            $client_name = 'Jane Doe';
+            $test_Client = new Client($client_name);
+            $test_Client->save();
+            $client_id = $test_Client->getId();
+
+            $name = 'Sally Style';
+            $bio = 'Sally does a lot of hair.';
+            $test_stylist = new Stylist ($name, $bio, $client_id);
+            $test_stylist->save();
+
+            $name2 = 'Sam Style';
+            $bio2 = 'Sam does a lot of hair.';
+            $test_stylist2 = new Stylist ($name2, $bio2, $client_id);
+            $test_stylist2->save();
+
+            Stylist::deleteAll();
+            $result = Stylist::getAll();
+
+            $this->assertEquals([], $result);
+        }
     }
 
 

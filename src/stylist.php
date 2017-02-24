@@ -49,15 +49,8 @@
 
         function save()
         {
-            // print_r("\nObject to save:\n");
-            // print_r("{$this->getName()}\n");
-            // print_r("{$this->getBio()}\n");
-            // print_r("{$this->getClientID()}\n");
             $GLOBALS['DB']->exec("INSERT INTO stylists (name, bio, client_id) VALUES ('{$this->getName()}', '{$this->getBio()}', {$this->getClientID()});");
             $this->id = $GLOBALS['DB']->lastInsertId();
-            // print_r("\nTHIS IS THE SAVE FUNCTION\n\n");
-            // print_r($this->id);
-            // print_r("\nEND OF SAVE FUNCTION\n\n");
         }
 
         function find($search_id)
@@ -88,8 +81,6 @@
         static function getAll()
         {
             $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
-            // print_r("Returned stylists\n");
-            // print_r($resturned_stylists);
             $stylists = [];
             foreach($returned_stylists as $stylist) {
                 $name = $stylist['name'];
