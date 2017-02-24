@@ -41,6 +41,22 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(true, is_numeric($result));
 
     }
+
+    function test_deleteAll()
+    {
+        $client_name = 'Jane Doe';
+        $test_Client = new Client ($client_name);
+        $test_Client->save();
+
+        $client_name2 = 'John Doe';
+        $test_Client2 = new Client ($client_name2);
+        $test_Client2->save();
+
+        Client::deleteAll();
+        $result = Client::getAll();
+
+        $this->assertEquals([], $result);
+    }
 }
 
 ?>
