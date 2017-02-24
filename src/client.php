@@ -15,6 +15,11 @@
             return $this->name;
         }
 
+        function getId()
+        {
+            return $this->id;
+        }
+
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO clients (name) VALUES ('{$this->getName()}');");
@@ -25,6 +30,7 @@
         {
             $GLOBALS['DB']->exec('DELETE FROM clients');
         }
+
 
 
 
