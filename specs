@@ -1,0 +1,7 @@
+*This website will allow user to add a new stylist
+**When creating a stylist the user will be allowed to enter a bio and name
+
+*This website will allow user to add a new client
+**When creating a client the user will be allowed to enter a name and select a stylist
+
+*This website will allow user to search for clients under each stylist
