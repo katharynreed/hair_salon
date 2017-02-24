@@ -69,7 +69,25 @@
             $result = Stylist::find($test_stylist->getId());
 
             $this->assertEquals($test_Stylist, $result);
+        }
 
+        function test_update()
+        {
+            $client_name = 'Jane Doe';
+            $test_Client = new Client ($client_name);
+            $test_Client->save();
+
+            $name = 'Sally Style';
+            $bio = 'Sally does a lot of hair.';
+            $client_id = $test_Client->getId();
+            $test_stylist = new Stylist ($name, $bio, $client_id);
+            $test_stylist->save();
+
+            $new_name = 'Sally Field-Style';
+
+            $test_stylist->update($new_name);
+
+            $this->assertEquals('Sally Field-Style', $test_stylist->getName());
         }
     }
 
