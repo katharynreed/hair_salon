@@ -1,12 +1,15 @@
 <?php
 
+    require_once __DIR__.'/../src/stylist.php';
+
     class Client
     {
         private $name;
 
-        function __construct($name, $id = null)
+        function __construct($name, $stylist_id, $id = null)
         {
             $this->name = $name;
+            $this->stylist_id = $stylist_id;
             $this->id = $id;
         }
 
@@ -20,6 +23,16 @@
             $this->name = $new_name;
         }
 
+        function getStylistId()
+        {
+            return $this->stylist_id;
+        }
+
+        function setStylistId($new_id)
+        {
+            $this->stylist_id = $new_id;
+        }
+
         function getId()
         {
             return $this->id;
@@ -27,7 +40,7 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO clients (name) VALUES ('{$this->getName()}');");
+            $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id) VALUES ('{$this->getName()}', {$this->getStylistId()});");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -61,8 +74,9 @@
             $clients = [];
             foreach($returned_clients as $client) {
                 $name = $client['name'];
+                $stylist_id = $client['stylist_id'];
                 $id = $client['id'];
-                $new_client = new Client($name, $id);
+                $new_client = new Client($name, $stylist_id, $id);
                 array_push($clients, $new_client);
             }
             return $clients;

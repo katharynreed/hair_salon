@@ -22,14 +22,9 @@
 
         function test_getName()
         {
-            $client_name = 'Jane Doe';
-            $test_Client = new Client ($client_name);
-            $test_Client->save();
-
             $name = 'Sally Style';
             $bio = 'Sally does a lot of hair.';
-            $client_id = $test_Client->getId();
-            $test_stylist = new Stylist ($name, $bio, $client_id);
+            $test_stylist = new Stylist ($name, $bio);
             $test_stylist->save();
             //get above stylist FROM database
             //compare result from DB to 'Sally Style'
@@ -41,14 +36,9 @@
 
         function test_getId()
         {
-            $client_name = 'Jane Doe';
-            $test_Client = new Client ($client_name);
-            $test_Client->save();
-
             $name = 'Sally Style';
             $bio = 'Sally does a lot of hair.';
-            $client_id = $test_Client->getId();
-            $test_stylist = new Stylist ($name, $bio, $client_id);
+            $test_stylist = new Stylist ($name, $bio);
             $test_stylist->save();
 
             $result = $test_stylist->getId();
@@ -58,14 +48,9 @@
 
         function test_find()
         {
-            $client_name = 'Jane Doe';
-            $test_Client = new Client ($client_name);
-            $test_Client->save();
-
             $name = 'Sally Style';
             $bio = 'Sally does a lot of hair.';
-            $client_id = $test_Client->getId();
-            $test_stylist = new Stylist ($name, $bio, $client_id);
+            $test_stylist = new Stylist ($name, $bio);
             $test_stylist->save();
 
             $result = Stylist::find($test_stylist->getId());
@@ -75,14 +60,9 @@
 
         function test_update()
         {
-            $client_name = 'Jane Doe';
-            $test_Client = new Client ($client_name);
-            $test_Client->save();
-
             $name = 'Sally Style';
             $bio = 'Sally does a lot of hair.';
-            $client_id = $test_Client->getId();
-            $test_stylist = new Stylist ($name, $bio, $client_id);
+            $test_stylist = new Stylist ($name, $bio);
             $test_stylist->save();
 
             $new_name = 'Sally Field-Style';
@@ -94,19 +74,14 @@
 
         function test_delete()
         {
-            $client_name = 'Jane Doe';
-            $test_Client = new Client ($client_name);
-            $test_Client->save();
-            $client_id = $test_Client->getId();
-
             $name = 'Sally Style';
             $bio = 'Sally does a lot of hair.';
-            $test_stylist = new Stylist ($name, $bio, $client_id);
+            $test_stylist = new Stylist ($name, $bio);
             $test_stylist->save();
 
             $name2 = 'Sam Style';
             $bio2 = 'Sam does a lot of hair.';
-            $test_stylist2 = new Stylist ($name2, $bio2, $client_id);
+            $test_stylist2 = new Stylist ($name2, $bio2);
             $test_stylist2->save();
 
             $test_stylist2->delete();
@@ -116,43 +91,31 @@
 
         function test_getAll()
         {
-            $client_name = 'Jane Doe';
-            $test_Client = new Client($client_name);
-            $test_Client->save();
-            $client_id = $test_Client->getId();
-
             $name = 'Sally Style';
             $bio = 'Sally does a lot of hair.';
-            $test_stylist = new Stylist ($name, $bio, $client_id);
+            $test_stylist = new Stylist ($name, $bio);
             $test_stylist->save();
 
             $name2 = 'Sam Style';
             $bio2 = 'Sam does a lot of hair.';
-            $test_stylist2 = new Stylist ($name2, $bio2, $client_id);
+            $test_stylist2 = new Stylist ($name2, $bio2);
             $test_stylist2->save();
 
             $result = Stylist::getAll();
-            // print_r("Here is the result!!\n\n");
-            // print_r($result);
 
             $this->assertEquals([$test_stylist, $test_stylist2], $result);
         }
 
         function test_deleteAll()
         {
-            $client_name = 'Jane Doe';
-            $test_Client = new Client($client_name);
-            $test_Client->save();
-            $client_id = $test_Client->getId();
-
             $name = 'Sally Style';
             $bio = 'Sally does a lot of hair.';
-            $test_stylist = new Stylist ($name, $bio, $client_id);
+            $test_stylist = new Stylist ($name, $bio);
             $test_stylist->save();
 
             $name2 = 'Sam Style';
             $bio2 = 'Sam does a lot of hair.';
-            $test_stylist2 = new Stylist ($name2, $bio2, $client_id);
+            $test_stylist2 = new Stylist ($name2, $bio2);
             $test_stylist2->save();
 
             Stylist::deleteAll();
