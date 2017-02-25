@@ -23,6 +23,22 @@
         return $app['twig']->render('homepage.html.twig', ['stylists' => Stylist::getAll()]);
     });
 
+    $app->get('/add_stylist', function() use ($app) {
+        return $app['twig']->render('add_stylist.html.twig', ['stylists' => Stylist::getAll()]);
+    });
+
+    $app->get('/stylists', function() use ($app) {
+        return $app['twig']->render('stylists.html.twig', ['stylists' => Stylist::getAll()]);
+    });
+
+    $app->get('/clients', function() use ($app) {
+        return $app['twig']->render('clients.html.twig', ['stylists' => Stylist::getAll(), 'clients' => Client::getAll()]);
+    });
+
+    $app->get('/clients/{id}/edit', function($id) use ($app) {
+        return $app['twig']->render('clients_edit.html.twig', ['clients' => Client::getAll(), 'stylists' => Stylist::getAll()]);
+    });
+
     $app->post('/add_stylist', function() use($app) {
        $name = $_POST['name'];
        $bio = $_POST['bio'];
@@ -31,10 +47,43 @@
        return $app["twig"]->render("homepage.html.twig", ['stylists' => Stylist::getAll()]);
    });
 
-   $app->get('/stylists/{id}', function($id) use($app)  {
+   $app->get('/stylists/{id}', function($id) use($app)  { //THIS IS FOR SEARCHING CLIENTS UNDER STYLIST
        $stylist = Stylist::find($id);
        return $app['twig']->render('stylist.html.twig', ['stylist' => $stylist, 'clients' => $stylist->getClients()]);
    });
+
+   $app->post('/stylists/{id}', function($id) use($app) {
+       $stylist = Stylist::find($id);
+       $name = $_POST['name'];
+       $phone = $_POST['phone'];
+       $new_client = new Client($name, $phone, $id);
+       $new_client->save();
+       return $app['twig']->render('stylist.html.twig', ['stylist' => $stylist, 'clients' => $stylist->getClients()]);
+   });
+
+   $app->get('/stylists/{id}/edit', function($id) use($app) {
+        $stylist = Stylist::find($id);
+        return $app['twig']->render('stylist_edit.html.twig', ['stylist' => $stylist]);
+    });
+
+    $app->delete('/stylists/{id}', function($id) use($app) {
+        $stylist = Stylist::find($id);
+        $stylist->delete();
+        return $app->redirect('/');
+    });
+
+    $app->patch('/clients/{id}/edit', function($id) use($app) {
+        $name = $_POST['name'];
+        $client = Client::find($id);
+        $client->update($name);
+        return $app->redirect('/');
+    });
+
+    $app->delete('/clients/{id}', function($id) use($app) {
+     $client = Client::find($id);
+     $client->delete();
+     return $app->redirect('/');
+    });
 
     return $app;
 ?>
