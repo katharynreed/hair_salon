@@ -5,6 +5,8 @@
     class Client
     {
         private $name;
+        private $stylist_id;
+        private $id;
 
         function __construct($name, $stylist_id, $id = null)
         {
