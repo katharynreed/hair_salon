@@ -89,6 +89,30 @@
             $this->assertEquals([$test_stylist], Stylist::getAll());
         }
 
+        function getClients()
+        {
+            $name = 'Sally Style';
+            $bio = 'Sally does a lot of hair.';
+            $test_stylist = new Stylist($name, $bio);
+            $test_stylist = save();
+
+            $test_stylist_id = $test_stylist->getId();
+
+            $client_name = 'Jane Doe';
+            $test_client1 = new Client($name, $stylist_id);
+            $test_client1->save();
+
+            $client_name2 = 'John Doe';
+            $test_client2 = new Client($name, $stylist_id);
+            $test_client2 = save();
+
+            $result = $test_stylist->getClients();
+
+            $this->assertEquals([$test_client1, $test_client2], $result);
+
+
+        }
+
         function test_getAll()
         {
             $name = 'Sally Style';
