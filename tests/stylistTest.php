@@ -109,8 +109,6 @@
             $result = $test_stylist->getClients();
 
             $this->assertEquals([$test_client1, $test_client2], $result);
-
-
         }
 
         function test_getAll()
