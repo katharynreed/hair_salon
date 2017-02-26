@@ -35,10 +35,6 @@
         return $app['twig']->render('clients.html.twig', ['stylists' => Stylist::getAll(), 'clients' => Client::getAll()]);
     });
 
-    $app->get('/clients/{id}/edit', function($id) use ($app) {
-        return $app['twig']->render('clients_edit.html.twig', ['clients' => Client::getAll(), 'stylists' => Stylist::getAll()]);
-    });
-
     $app->post('/add_stylist', function() use($app) {
        $name = $_POST['name'];
        $bio = $_POST['bio'];
@@ -55,8 +51,8 @@
    $app->post('/stylists/{id}', function($id) use($app) {
        $stylist = Stylist::find($id);
        $name = $_POST['name'];
-       $phone = $_POST['phone'];
-       $new_client = new Client($name, $phone, $id);
+       $stylist_id = $stylist.getId();
+       $new_client = new Client($name, $stylist_id, $id);
        $new_client->save();
        return $app['twig']->render('stylist.html.twig', ['stylist' => $stylist, 'clients' => $stylist->getClients()]);
    });
@@ -66,10 +62,21 @@
         return $app['twig']->render('stylist_edit.html.twig', ['stylist' => $stylist]);
     });
 
+    $app->patch('/stylists/{id}/edit', function($id) use ($app) {
+        $name = $_POST['name'];
+        $stylist = Stylist::find($id);
+        $stylist->update($name);
+        return $app->redirect('/');
+    });
+
     $app->delete('/stylists/{id}', function($id) use($app) {
         $stylist = Stylist::find($id);
         $stylist->delete();
-        return $app->redirect('/');
+        return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
+    $app->get('/clients/{id}/edit', function($id) use ($app) {
+        return $app['twig']->render('clients_edit.html.twig', ['clients' => Client::getAll(), 'stylists' => Stylist::getAll()]);
     });
 
     $app->patch('/clients/{id}/edit', function($id) use($app) {
