@@ -1,0 +1,36 @@
+body {
+    text-align: center;
+    background-image: url(img/leaves.jpg);
+    font-family: 'Montserrat', sans-serif;
+}
+
+label {
+    font-family: 'Quicksand', sans-serif;
+}
+
+a {
+    font-family: 'Quicksand', sans-serif;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 50px;
+}
+
+.btn {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.form-control {
+    width: 300px;
+}
+
+.form-margin {
+    padding-left: 33%;
+    padding-bottom: 10px;
+}
+
+.btn-form {
+    margin-top: 10px;
+}

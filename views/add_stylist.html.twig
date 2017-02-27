@@ -3,19 +3,36 @@
     <head>
         <meta charset="utf-8">
         <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Montserrat|Pacifico|Quicksand" rel="stylesheet">
     </head>
     <body>
-        <h4>Add a stylist</h4>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="page-header">
+                        <h1>Add a stylist</h1>
+                    </div>
+                    <div class="page-header">
+                        <form action='/add_stylist' method='post'>
+                            <label type="name">Stylist Name:</label>
+                            <div class="form-margin">
+                                <input id="name" class="form-control" type="text" name="name" placeholder="Enter name...">
+                            </div>
+                            <label for='bio'>About the Stylist:</label>
+                            <div class="form-margin">
+                                <input id='bio' class="form-control" name='bio' type='text' placeholder="Enter stylist bio...">
+                            </div>
+                            <div class="btn-form">
+                                <button class="btn" type='submit'>Add stylist</button>
+                            </div>
+                        </form>
+                    </div>
 
-    <form action='/tasks' method='post'>
-        <input type="name">Stylist Name:<label>
-            <input id="name" type="text" name="name" placeholder="Ever name...">
-        <label for='bio'>About the Stylist:</label>
-            <input id='bio' name='bio' type='text' placeholder="Enter stylist bio...">
-
-        <button type='submit'>Add stylist</button>
-    </form>
-
-    <p><a href='/'>Home</a></p>
+                        <p><a href='/'>Home</a></p>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

@@ -3,22 +3,30 @@
     <head>
         <meta charset="utf-8">
         <title>Hair Salon</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Montserrat|Pacifico|Quicksand" rel="stylesheet">
     </head>
     <body>
-        <h1>Hair Salon</h1>
-        {% block content %}
-            Welcome {{ client.getName }}!
-            <blockquote>
-                {% for stylist in stylists %}
-                    {% if {{client.getId }} == stylist {{ stylist.getClientId }} %}
-                     <p><a href="stylist/{{ stylist.getId }}">Your stylist is {{ stylist.getName }}.</a><p>
-                    {% endif %}
-                {% endfor %}
-            </blockquote>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="page-header">
+                        <h1>Hair Salon</h1>
+                    </div>
+                    <div class="page-header">
+                        <h2> {{ stylist.getName }}</h2>
+                        {% for client in stylist.getClients %}
+                        <p>{{client.getName}}</p>
+                        {% endfor %}
+                    </div>
 
-            <p><a href='/clients'>See client list</a></p>
-            <p><a href='/stylists'>See stylist list</a></p>
-            <p><a href='/add_stylist'>Add a stylist</a></p>
-        {% endblock %}
+                    <p><a href='/'>Home</a></p>
+                    <p><a href='/clients'>See client list</a></p>
+                    <p><a href='/stylists'>See stylist list</a></p>
+                    <p><a href='/add_stylist'>Add a stylist</a></p>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
