@@ -2,7 +2,7 @@
 
 #### _A web app build to manage, edit, and delete stylist and client information using a msql database.  02/24/17_
 
-#### By _**Katharyn Reedr**_
+#### By _**Katharyn Reed**_
 
 ## Description
 
