@@ -16,7 +16,7 @@
                     </div>
                     <div class ="page-header">
                     {% for stylist in stylists %}
-                    <h3>{{stylist.getName}}</h3>
+                    <h3><a href="/stylists/{{ stylist.getId }}">{{stylist.getName}}</a></h3>
                     <h5>{{stylist.getBio}}</h5>
                     <p><a href='/stylists/{{ stylist.getId }}/edit'>Edit this stylist</a></p>
                     </div>
