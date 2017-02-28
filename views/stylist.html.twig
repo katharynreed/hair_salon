@@ -19,6 +19,7 @@
                         {% for client in stylist.getClients %}
                         <p>{{client.getName}}</p>
                         {% endfor %}
+                        <p><a href='/stylists/{{ stylist.getId }}/edit'>Edit this stylist</a></p>
                     </div>
 
                     <p><a href='/'>Home</a></p>
